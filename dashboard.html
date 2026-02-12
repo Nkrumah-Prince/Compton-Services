@@ -9,78 +9,108 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif;}
 body{background:#f4f7fd;color:#333;}
-header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:40px 20px;text-align:center;}
+header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:50px 20px;text-align:center;}
 header h1{font-size:2.5rem;margin-bottom:10px;}
 header p{font-size:1.2rem;opacity:0.9;}
-main{max-width:1200px;margin:30px auto;padding:0 20px;}
-.card{background:#fff;border-radius:25px;padding:35px;margin-bottom:40px;box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+nav{margin-top:20px;}
+nav a{color:#fff;padding:10px 20px;margin:5px;border-radius:10px;background:rgba(255,255,255,0.2);transition:0.3s;}
+nav a:hover{background:#ffcc00;color:#000;}
+main{max-width:1200px;margin:40px auto;padding:0 20px;}
 h2{text-align:center;margin-bottom:30px;color:#6a11cb;}
-table{width:100%;border-collapse:collapse;}
-th,td{border:1px solid #ccc;padding:12px;text-align:center;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:40px;}
+.card{background:#fff;border-radius:25px;padding:30px;box-shadow:0 12px 30px rgba(0,0,0,0.12);transition:all 0.3s ease;}
+.card:hover{transform:translateY(-5px);}
+.card h3{font-size:1.3rem;color:#6a11cb;margin-bottom:10px;}
+.card p{font-size:1rem;margin-bottom:8px;}
+.table-container{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;margin-bottom:30px;}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #ddd;}
 th{background:#6a11cb;color:#fff;}
-tr:nth-child(even){background:#f9f9f9;}
-.status-paid{color:green;font-weight:bold;}
-.status-pending{color:orange;font-weight:bold;}
-.status-failed{color:red;font-weight:bold;}
-button{background:#6a11cb;color:#fff;padding:10px 15px;border:none;border-radius:10px;cursor:pointer;transition:0.3s;}
-button:hover{background:#2575fc;}
-footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:40px;}
+tr:hover{background:#f1f1f1;}
+footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:60px;}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Compton Digital Services Dashboard</h1>
-  <p>Track all bookings, services, and payments</p>
+  <h1>Admin Dashboard</h1>
+  <p>Summary of all bookings & services</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="cv.html">CV Writing</a>
+    <a href="linkedin.html">LinkedIn Setup</a>
+    <a href="windows.html">Windows Install</a>
+  </nav>
 </header>
 
 <main>
-  <div class="card">
-    <h2>Recent Bookings</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Service</th>
-          <th>Payment Reference</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="bookingTable">
-        <!-- Sample data, dynamic later -->
-        <tr>
-          <td>1</td>
-          <td>Prince N.</td>
-          <td>0245551234</td>
-          <td>Normal Assignment</td>
-          <td>REF123ABC</td>
-          <td class="status-paid">Paid</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Millicent A.</td>
-          <td>0245555678</td>
-          <td>LinkedIn Setup</td>
-          <td>REF456DEF</td>
-          <td class="status-pending">Pending</td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Quick Stats</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Total CV Bookings</h3>
+      <p id="cvCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Total LinkedIn Bookings</h3>
+      <p id="linkedinCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Total Windows Installations</h3>
+      <p id="windowsCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Total Assignment Bookings</h3>
+      <p id="assignmentCount">0</p>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Actions</h2>
-    <p>Use this area to manage bookings, verify payments, and contact clients.</p>
-    <button onclick="alert('This will be expanded in future versions')">Add New Booking</button>
-    <button onclick="alert('Payment verification feature coming soon')">Verify Payments</button>
+  <h2>All Bookings</h2>
+  <div class="table-container">
+    <table id="bookingsTable">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Details</th>
+          <th>Payment Ref</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic bookings will appear here -->
+      </tbody>
+    </table>
   </div>
 </main>
 
 <footer>
   <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
 </footer>
+
+<script>
+// Dummy data: in real usage, you can integrate backend or Google Sheets
+const bookings = [
+  {service:'CV Writing',name:'John Doe',contact:'024XXXXXXX',details:'Need CV for IT job',ref:'PSK_001',date:'2026-02-12'},
+  {service:'LinkedIn Setup',name:'Jane Smith',contact:'055XXXXXXX',details:'Marketing professional',ref:'PSK_002',date:'2026-02-13'},
+  {service:'Windows Installation',name:'Prince Nkrumah',contact:'024555205085',details:'Laptop',ref:'PSK_003',date:'2026-02-14'},
+  {service:'Assignment',name:'Millicent',contact:'024XXXXXXX',details:'Math assignment',ref:'PSK_004',date:'2026-02-15'}
+];
+
+// Populate counts
+document.getElementById('cvCount').innerText = bookings.filter(b=>b.service==='CV Writing').length;
+document.getElementById('linkedinCount').innerText = bookings.filter(b=>b.service==='LinkedIn Setup').length;
+document.getElementById('windowsCount').innerText = bookings.filter(b=>b.service==='Windows Installation').length;
+document.getElementById('assignmentCount').innerText = bookings.filter(b=>b.service==='Assignment').length;
+
+// Populate table
+const tableBody = document.querySelector('#bookingsTable tbody');
+bookings.forEach(b=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${b.service}</td><td>${b.name}</td><td>${b.contact}</td><td>${b.details}</td><td>${b.ref}</td><td>${b.date}</td>`;
+  tableBody.appendChild(tr);
+});
+</script>
 
 </body>
 </html>
