@@ -3,56 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compton Digital Services</title>
-<link rel="stylesheet" href="style.css">
+<title>Pro Study Help & Assignment Booking</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif;}
+body{background:#f4f7fd;color:#333;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+/* HEADER */
+header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:50px 20px;text-align:center;}
+header h1{font-size:3rem;margin-bottom:10px;}
+header p{font-size:1.3rem;opacity:0.9;}
+nav{margin-top:20px;}
+nav a{color:#fff;padding:10px 20px;margin:5px;border-radius:10px;background:rgba(255,255,255,0.2);transition:0.3s;}
+nav a:hover{background:#ffcc00;color:#000;}
+
+/* MAIN */
+main{max-width:1100px;margin:50px auto;padding:0 20px;}
+.card{background:#fff;border-radius:25px;padding:35px;margin-bottom:50px;box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+h2{text-align:center;margin-bottom:30px;color:#6a11cb;}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.service{border-radius:18px;padding:30px;background:linear-gradient(145deg,#fdfbfb,#ebedee);border-left:10px solid #6a11cb;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.service:hover{box-shadow:0 10px 30px rgba(0,0,0,0.18);}
+.service i{font-size:2rem;color:#6a11cb;margin-bottom:15px;display:block;}
+.service h3{font-size:1.4rem;margin-bottom:10px;color:#333;}
+.service p{font-size:1rem;opacity:0.85;margin-bottom:15px;}
+.price{font-weight:bold;font-size:1.5rem;color:#ff5722;}
+.tooltip{position:absolute;bottom:15px;right:15px;background:#6a11cb;color:#fff;padding:6px 10px;border-radius:6px;font-size:0.85rem;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.service:hover .tooltip{opacity:1;}
+footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:60px;}
+@media(max-width:600px){header h1{font-size:2rem;}header p{font-size:1rem;}.service h3{font-size:1.1rem;}.price{font-size:1.2rem;}}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>Compton Digital Services</h1>
-  <p>Professional assignments, career & tech services with easy booking</p>
+  <h1>Pro Study Help & Digital Services</h1>
+  <p>Assignments, CV, LinkedIn, Windows Installation & More</p>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="cv.html">CV Writing</a>
+    <a href="linkedin.html">LinkedIn Setup</a>
+    <a href="windows.html">Windows Install</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
 </header>
 
 <main>
-  <div class="card">
-    <h2>Our Services</h2>
+  <!-- SERVICES -->
+  <div class="card" id="services">
+    <h2>Our Services & Pricing</h2>
     <div class="services">
-      <div class="service" onclick="location.href='assignment.html'">
+      <div class="service" onclick="window.location.href='index.html#normal'">
         <i class="fas fa-book"></i>
-        <h3>Assignments</h3>
-        <p>Normal, practical, or project assignments</p>
-        <p class="price">GHS 20 – 70</p>
-      </div>
-      <div class="service" onclick="location.href='linkedin.html'">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn Setup</h3>
-        <p>Professional profile setup</p>
+        <h3>Normal Assignment</h3>
+        <p>Complete guidance, review, and corrections for written assignments.</p>
         <p class="price">GHS 20</p>
+        <div class="tooltip">Click to view details & pay</div>
       </div>
-      <div class="service" onclick="location.href='cv.html'">
+      <div class="service" onclick="window.location.href='index.html#practical'">
+        <i class="fas fa-flask"></i>
+        <h3>Practical Assignment</h3>
+        <p>Hands-on support for labs, software, and practical tasks.</p>
+        <p class="price">GHS 25</p>
+        <div class="tooltip">Click to view details & pay</div>
+      </div>
+      <div class="service" onclick="window.location.href='index.html#project'">
+        <i class="fas fa-tasks"></i>
+        <h3>Project / Coursework</h3>
+        <p>Step-by-step guidance from start to submission.</p>
+        <p class="price">GHS 70</p>
+        <div class="tooltip">Click to view details & pay</div>
+      </div>
+      <div class="service" onclick="window.location.href='cv.html'">
         <i class="fas fa-file-alt"></i>
         <h3>CV Writing</h3>
-        <p>Create a strong CV for jobs</p>
+        <p>Professional CV creation to boost your career.</p>
         <p class="price">GHS 20</p>
+        <div class="tooltip">Click to view & pay</div>
       </div>
-      <div class="service" onclick="location.href='windows.html'">
+      <div class="service" onclick="window.location.href='linkedin.html'">
+        <i class="fas fa-user-circle"></i>
+        <h3>LinkedIn Setup</h3>
+        <p>Create a professional LinkedIn profile and optimize your network.</p>
+        <p class="price">GHS 20</p>
+        <div class="tooltip">Click to view & pay</div>
+      </div>
+      <div class="service" onclick="window.location.href='windows.html'">
         <i class="fas fa-windows"></i>
         <h3>Windows Installation</h3>
-        <p>Professional Windows setup</p>
+        <p>Professional Windows installation and setup on your PC.</p>
         <p class="price">GHS 100</p>
+        <div class="tooltip">Click to view & pay</div>
       </div>
     </div>
   </div>
 </main>
 
-<!-- Floating WhatsApp -->
-<a class="whatsapp-float" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i></a>
-
 <footer>
-  <p>© 2026 Compton Digital Services • All rights reserved</p>
+  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
