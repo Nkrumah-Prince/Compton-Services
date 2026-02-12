@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project / Coursework Service</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Project / Coursework Service</h1>
+  <p>Step-by-step guidance from start to submission for long-term projects and coursework.</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Service Details</h2>
+    <p>This service provides full support for your projects and coursework. You will receive:</p>
+    <ul>
+      <li>Planning and research guidance</li>
+      <li>Step-by-step execution support</li>
+      <li>Review, corrections, and submission preparation</li>
+    </ul>
+    <p class="price">Price: GHS 70</p>
+  </div>
+
+  <div class="card">
+    <h2>Payment</h2>
+    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
+    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/PROJECT789" target="_blank" onclick="markPaid(event)">Pay GHS 70 via MTN MoMo</a>
+  </div>
+
+  <div class="card">
+    <h2>Confirm Booking</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+      <label>Full Name
+        <input type="text" id="name" placeholder="Your full name" required>
+      </label>
+      <label>Email or WhatsApp Number
+        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
+      </label>
+      <label>Course
+        <input type="text" id="course" placeholder="Course name" required>
+      </label>
+      <label>Assignment Type
+        <input type="text" id="type" value="Project / Coursework" readonly>
+      </label>
+      <label>Preferred Date
+        <input type="date" id="date" required>
+      </label>
+      <label>Payment Reference
+        <input type="text" id="reference" placeholder="Enter payment reference" required>
+      </label>
+      <label>Additional Details
+        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
+      </label>
+      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
+      <p class="note">Button will unlock after clicking the payment button.</p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
