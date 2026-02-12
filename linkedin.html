@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Setup – Compton Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; font-family:'Roboto',sans-serif; }
+  body{background:#f4f7fd; color:#333; scroll-behavior:smooth;}
+  a{text-decoration:none;color:inherit;}
+  header{background:linear-gradient(135deg,#6a11cb,#2575fc); color:#fff; text-align:center; padding:50px 20px;}
+  header h1{font-size:2.8rem; margin-bottom:10px;}
+  header p{font-size:1.2rem; opacity:0.9;}
+  main{max-width:1000px; margin:40px auto; padding:0 20px;}
+  .card{background:#fff; border-radius:25px; padding:35px; margin-bottom:40px; box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+  h2{text-align:center; margin-bottom:30px; color:#6a11cb;}
+  .service-description p{margin-bottom:15px;}
+  .price{font-weight:bold; font-size:1.5rem; color:#ff5722;}
+  .pay-btn{display:block; text-align:center; padding:18px; background:#ffcc00; color:#000; border-radius:15px; font-weight:bold; margin-top:20px; font-size:1.1rem; transition:all 0.3s;}
+  .pay-btn:hover{background:#e6b800; transform:scale(1.05);}
+  form label{display:block; margin-top:18px; font-weight:500;}
+  input,textarea,button{width:100%; padding:15px; margin-top:6px; border-radius:10px; border:1px solid #ccc; font-size:1rem;}
+  input:focus,textarea:focus{border-color:#6a11cb; outline:none;}
+  textarea{resize:vertical;}
+  button{background:#6a11cb; color:#fff; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem;}
+  button:hover{background:#2575fc;}
+  button[disabled]{background:#888; cursor:not-allowed;}
+  .note{font-size:0.9rem; color:#555; margin-top:8px;}
+  footer{text-align:center; padding:30px; font-size:0.9rem; color:#777; margin-top:60px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>LinkedIn Profile Setup</h1>
+  <p>Professional LinkedIn profile creation for career growth</p>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Service Details</h2>
+    <div class="service-description">
+      <p>We help you craft a standout LinkedIn profile, including professional headline, summary, experience, skills, and recommendations.</p>
+      <p class="price">GHS 20</p>
+    </div>
+    <label>Select Service
+      <select id="serviceSelect" onchange="setPaymentLink()" required>
+        <option value="">LinkedIn Profile – GHS 20</option>
+      </select>
+    </label>
+    <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
+    <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
+  </div>
+
+  <div class="card">
+    <h2>Booking Form</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+      <label>Full Name<input type="text" id="name" placeholder="Your full name" required></label>
+      <label>WhatsApp Number<input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required></label>
+      <label>LinkedIn Goals<textarea id="details" rows="4" placeholder="Your LinkedIn objectives"></textarea></label>
+      <label>Payment Reference<input type="text" id="reference" placeholder="Enter payment reference" required></label>
+      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
+      <p class="note">Button unlocks after clicking the payment button.</p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
+</footer>
+
+<script>
+function setPaymentLink(){document.getElementById('payBtn').href='https://momo.com/pay/LINKEDIN123';}
+function markPaid(e){e.preventDefault();localStorage.setItem('paidClicked','yes');document.getElementById('confirmBtn').disabled=false;}
+function sendToWhatsApp(e){
+e.preventDefault();
+if(localStorage.getItem('paidClicked')!=='yes'){alert('Please complete payment first.');return;}
+const name=document.getElementById('name').value;
+const contact=document.getElementById('contact').value;
+const details=document.getElementById('details').value;
+const ref=document.getElementById('reference').value;
+const phoneNumber='233550520858';
+const msg=`Hello, I have PAID and want to confirm LinkedIn booking.%0AName: ${name}%0AContact: ${contact}%0ADetails: ${details}%0APayment Reference: ${ref}`;
+window.open(`https://wa.me/${phoneNumber}?text=${msg}`,'_blank');}
+</script>
+
+</body>
+</html>
