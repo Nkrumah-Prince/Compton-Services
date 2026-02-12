@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard – Compton Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif;}
+body{background:#f4f7fd;color:#333;}
+header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:40px 20px;text-align:center;}
+header h1{font-size:2.5rem;margin-bottom:10px;}
+header p{font-size:1.2rem;opacity:0.9;}
+main{max-width:1200px;margin:30px auto;padding:0 20px;}
+.card{background:#fff;border-radius:25px;padding:35px;margin-bottom:40px;box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+h2{text-align:center;margin-bottom:30px;color:#6a11cb;}
+table{width:100%;border-collapse:collapse;}
+th,td{border:1px solid #ccc;padding:12px;text-align:center;}
+th{background:#6a11cb;color:#fff;}
+tr:nth-child(even){background:#f9f9f9;}
+.status-paid{color:green;font-weight:bold;}
+.status-pending{color:orange;font-weight:bold;}
+.status-failed{color:red;font-weight:bold;}
+button{background:#6a11cb;color:#fff;padding:10px 15px;border:none;border-radius:10px;cursor:pointer;transition:0.3s;}
+button:hover{background:#2575fc;}
+footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Compton Digital Services Dashboard</h1>
+  <p>Track all bookings, services, and payments</p>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Recent Bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Service</th>
+          <th>Payment Reference</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="bookingTable">
+        <!-- Sample data, dynamic later -->
+        <tr>
+          <td>1</td>
+          <td>Prince N.</td>
+          <td>0245551234</td>
+          <td>Normal Assignment</td>
+          <td>REF123ABC</td>
+          <td class="status-paid">Paid</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Millicent A.</td>
+          <td>0245555678</td>
+          <td>LinkedIn Setup</td>
+          <td>REF456DEF</td>
+          <td class="status-pending">Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Actions</h2>
+    <p>Use this area to manage bookings, verify payments, and contact clients.</p>
+    <button onclick="alert('This will be expanded in future versions')">Add New Booking</button>
+    <button onclick="alert('Payment verification feature coming soon')">Verify Payments</button>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
+</footer>
+
+</body>
+</html>
