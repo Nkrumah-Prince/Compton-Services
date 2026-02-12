@@ -3,114 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard – Compton Digital Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Compton Services - Dashboard</title>
+<link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif;}
-body{background:#f4f7fd;color:#333;}
-header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:50px 20px;text-align:center;}
-header h1{font-size:2.5rem;margin-bottom:10px;}
-header p{font-size:1.2rem;opacity:0.9;}
-nav{margin-top:20px;}
-nav a{color:#fff;padding:10px 20px;margin:5px;border-radius:10px;background:rgba(255,255,255,0.2);transition:0.3s;}
-nav a:hover{background:#ffcc00;color:#000;}
-main{max-width:1200px;margin:40px auto;padding:0 20px;}
-h2{text-align:center;margin-bottom:30px;color:#6a11cb;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:40px;}
-.card{background:#fff;border-radius:25px;padding:30px;box-shadow:0 12px 30px rgba(0,0,0,0.12);transition:all 0.3s ease;}
-.card:hover{transform:translateY(-5px);}
-.card h3{font-size:1.3rem;color:#6a11cb;margin-bottom:10px;}
-.card p{font-size:1rem;margin-bottom:8px;}
-.table-container{overflow-x:auto;}
-table{width:100%;border-collapse:collapse;margin-bottom:30px;}
-th,td{padding:12px;text-align:left;border-bottom:1px solid #ddd;}
-th{background:#6a11cb;color:#fff;}
-tr:hover{background:#f1f1f1;}
-footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:60px;}
-</style>
 </head>
 <body>
 
 <header>
-  <h1>Admin Dashboard</h1>
-  <p>Summary of all bookings & services</p>
+  <h1>Compton Services Dashboard</h1>
+  <p>Select a service to get started!</p>
   <nav>
     <a href="index.html">Home</a>
-    <a href="cv.html">CV Writing</a>
-    <a href="linkedin.html">LinkedIn Setup</a>
-    <a href="windows.html">Windows Install</a>
+    <a href="dashboard.html">Dashboard</a>
   </nav>
 </header>
 
 <main>
-  <h2>Quick Stats</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Total CV Bookings</h3>
-      <p id="cvCount">0</p>
+  <section class="cards">
+    <div class="card service" onclick="selectService('normal')">
+      <i class="fas fa-book"></i>
+      <h3>Normal Assignment</h3>
+      <p>Complete guidance, review, and corrections for written assignments.</p>
+      <p class="price">GHS 20</p>
+      <div class="tooltip">Click to select this service</div>
     </div>
-    <div class="card">
-      <h3>Total LinkedIn Bookings</h3>
-      <p id="linkedinCount">0</p>
+
+    <div class="card service" onclick="selectService('practical')">
+      <i class="fas fa-flask"></i>
+      <h3>Practical Assignment</h3>
+      <p>Hands-on support for labs, software, and practical tasks.</p>
+      <p class="price">GHS 25</p>
+      <div class="tooltip">Click to select this service</div>
     </div>
-    <div class="card">
-      <h3>Total Windows Installations</h3>
-      <p id="windowsCount">0</p>
+
+    <div class="card service" onclick="selectService('project')">
+      <i class="fas fa-tasks"></i>
+      <h3>Project / Coursework</h3>
+      <p>Step-by-step guidance from start to submission.</p>
+      <p class="price">GHS 70</p>
+      <div class="tooltip">Click to select this service</div>
     </div>
-    <div class="card">
-      <h3>Total Assignment Bookings</h3>
-      <p id="assignmentCount">0</p>
+
+    <div class="card service" onclick="selectService('cv')">
+      <i class="fas fa-file-alt"></i>
+      <h3>CV Writing</h3>
+      <p>Professional CV creation and improvement for job applications.</p>
+      <p class="price">GHS 20</p>
+      <div class="tooltip">Click to select this service</div>
     </div>
+
+    <div class="card service" onclick="selectService('linkedin')">
+      <i class="fab fa-linkedin"></i>
+      <h3>LinkedIn Setup</h3>
+      <p>Build a professional LinkedIn profile to attract recruiters.</p>
+      <p class="price">GHS 20</p>
+      <div class="tooltip">Click to select this service</div>
+    </div>
+
+    <div class="card service" onclick="selectService('windows')">
+      <i class="fas fa-desktop"></i>
+      <h3>Windows Installation</h3>
+      <p>Fresh Windows setup, installation, and configuration for your PC.</p>
+      <p class="price">GHS 100</p>
+      <div class="tooltip">Click to select this service</div>
+    </div>
+  </section>
+
+  <!-- PAYMENT & BOOKING -->
+  <div class="card">
+    <h2>Payment & Booking</h2>
+    <p><strong>Accepted:</strong> MTN Mobile Money + WhatsApp Confirmation</p>
+
+    <label>Select Service
+      <select id="serviceSelect" onchange="setPaymentLink()" required>
+        <option value="">Choose a service</option>
+        <option value="normal">Normal Assignment – GHS 20</option>
+        <option value="practical">Practical Assignment – GHS 25</option>
+        <option value="project">Project / Coursework – GHS 70</option>
+        <option value="cv">CV Writing – GHS 20</option>
+        <option value="linkedin">LinkedIn Setup – GHS 20</option>
+        <option value="windows">Windows Installation – GHS 100</option>
+      </select>
+    </label>
+
+    <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay via MTN MoMo</a>
+    <p class="note">After payment, copy your <strong>payment reference</strong> to confirm booking below.</p>
+
+    <form onsubmit="sendToWhatsApp(event)">
+      <label>Full Name
+        <input type="text" id="name" placeholder="Your full name" required>
+      </label>
+      <label>Email or WhatsApp Number
+        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
+      </label>
+      <label>Course / Service
+        <input type="text" id="course" placeholder="Course or Service Name" required>
+      </label>
+      <label>Service Type
+        <select id="type" required>
+          <option value="">Select type</option>
+          <option>Normal Assignment</option>
+          <option>Practical Assignment</option>
+          <option>Project / Coursework</option>
+          <option>CV Writing</option>
+          <option>LinkedIn Setup</option>
+          <option>Windows Installation</option>
+        </select>
+      </label>
+      <label>Preferred Date
+        <input type="date" id="date" required>
+      </label>
+      <label>Payment Reference
+        <input type="text" id="reference" placeholder="Enter payment reference" required>
+      </label>
+      <label>Additional Details
+        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
+      </label>
+      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
+      <p class="note">Button unlocks after clicking the payment button.</p>
+    </form>
   </div>
 
-  <h2>All Bookings</h2>
-  <div class="table-container">
-    <table id="bookingsTable">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Details</th>
-          <th>Payment Ref</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Dynamic bookings will appear here -->
-      </tbody>
-    </table>
-  </div>
 </main>
 
 <footer>
-  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
+  <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script>
-// Dummy data: in real usage, you can integrate backend or Google Sheets
-const bookings = [
-  {service:'CV Writing',name:'John Doe',contact:'024XXXXXXX',details:'Need CV for IT job',ref:'PSK_001',date:'2026-02-12'},
-  {service:'LinkedIn Setup',name:'Jane Smith',contact:'055XXXXXXX',details:'Marketing professional',ref:'PSK_002',date:'2026-02-13'},
-  {service:'Windows Installation',name:'Prince Nkrumah',contact:'024555205085',details:'Laptop',ref:'PSK_003',date:'2026-02-14'},
-  {service:'Assignment',name:'Millicent',contact:'024XXXXXXX',details:'Math assignment',ref:'PSK_004',date:'2026-02-15'}
-];
-
-// Populate counts
-document.getElementById('cvCount').innerText = bookings.filter(b=>b.service==='CV Writing').length;
-document.getElementById('linkedinCount').innerText = bookings.filter(b=>b.service==='LinkedIn Setup').length;
-document.getElementById('windowsCount').innerText = bookings.filter(b=>b.service==='Windows Installation').length;
-document.getElementById('assignmentCount').innerText = bookings.filter(b=>b.service==='Assignment').length;
-
-// Populate table
-const tableBody = document.querySelector('#bookingsTable tbody');
-bookings.forEach(b=>{
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<td>${b.service}</td><td>${b.name}</td><td>${b.contact}</td><td>${b.details}</td><td>${b.ref}</td><td>${b.date}</td>`;
-  tableBody.appendChild(tr);
-});
-</script>
-
+<script src="./script.js"></script>
 </body>
 </html>
