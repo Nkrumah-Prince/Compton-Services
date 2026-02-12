@@ -20,11 +20,19 @@
 
 <main>
   <div class="card">
-    <h2>Service Details</h2>
-    <p>We help you create, enhance, and optimize your LinkedIn profile to attract recruiters and showcase your professional skills effectively. Includes profile headline, summary, experience, and recommendations setup.</p>
-    <p class="price">Price: GHS 20</p>
-  </div>
+  <h2>Payment (Required Before Booking)</h2>
+  <p><strong>Accepted:</strong> MTN Mobile Money via Moolre</p>
 
+  <label>Select Service
+    <select id="serviceSelect" onchange="setPaymentLink()" required>
+      <option value="">Choose a service</option>
+      <option value="linkedin">LinkedIn Setup – GHS 20</option>
+    </select>
+  </label>
+
+  <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
+  <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
+</div>
   <div class="card">
     <h2>Payment (Required Before Booking)</h2>
     <p><strong>Accepted:</strong> MTN Mobile Money via WhatsApp</p>
