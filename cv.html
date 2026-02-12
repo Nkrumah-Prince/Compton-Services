@@ -29,13 +29,21 @@
     </ul>
     <p class="price">Price: GHS 20</p>
   </div>
+<div class="card">
+  <h2>Payment (Required Before Booking)</h2>
+  <p><strong>Accepted:</strong> MTN Mobile Money via Moolre</p>
 
-  <div class="card">
-    <h2>Payment</h2>
-    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
-    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/CV123" target="_blank" onclick="markPaid(event)">Pay GHS 20 via MTN MoMo</a>
-  </div>
+  <label>Select Service
+    <select id="serviceSelect" onchange="setPaymentLink()" required>
+      <option value="">Choose a service</option>
+      <option value="linkedin">LinkedIn Setup – GHS 20</option>
+    </select>
+  </label>
 
+  <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
+  <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
+</div>
+  
   <div class="card">
     <h2>Confirm Booking</h2>
     <form onsubmit="sendToWhatsApp(event)">
