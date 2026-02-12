@@ -5,37 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practical Assignment Service</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
   <h1>Practical Assignment Service</h1>
-  <p>Hands-on support for labs, software, and practical tasks.</p>
+  <p>Hands-on support for labs, software, and practical tasks</p>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html">Back to Dashboard</a>
   </nav>
 </header>
 
 <main>
   <div class="card">
     <h2>Service Details</h2>
-    <p>This service provides comprehensive practical assignment support. You will receive:</p>
-    <ul>
-      <li>Guidance on lab exercises and software tasks</li>
-      <li>Step-by-step demonstrations</li>
-      <li>Hands-on corrections and improvements</li>
-    </ul>
+    <p>We provide detailed, step-by-step practical assignment support. This includes lab guidance, software configuration, simulations, demonstrations, and real-world problem solving to ensure your practical tasks are completed successfully.</p>
     <p class="price">Price: GHS 25</p>
   </div>
 
+  <!-- PAYMENT -->
   <div class="card">
-    <h2>Payment</h2>
-    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
-    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/PRACTICAL456" target="_blank" onclick="markPaid(event)">Pay GHS 25 via MTN MoMo</a>
+    <h2>Payment (Required Before Booking)</h2>
+    <p><strong>Pay directly to this MTN MoMo number:</strong> <strong>+233550520858</strong></p>
+    <p><strong>Name on account:</strong> Nkrumah Prince</p>
+    <p>Amount: GHS 25</p>
+    <p>After payment, send your payment reference and screenshot via WhatsApp to confirm your booking.</p>
   </div>
 
+  <!-- BOOKING FORM -->
   <div class="card">
     <h2>Confirm Booking</h2>
     <form onsubmit="sendToWhatsApp(event)">
@@ -45,11 +44,8 @@
       <label>Email or WhatsApp Number
         <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
       </label>
-      <label>Course
-        <input type="text" id="course" placeholder="Course name" required>
-      </label>
-      <label>Assignment Type
-        <input type="text" id="type" value="Practical Assignment" readonly>
+      <label>Course / Subject
+        <input type="text" id="course" placeholder="Your course or subject" required>
       </label>
       <label>Preferred Date
         <input type="date" id="date" required>
@@ -60,8 +56,7 @@
       <label>Additional Details
         <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
       </label>
-      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
-      <p class="note">Button will unlock after clicking the payment button.</p>
+      <button id="confirmBtn" type="submit">Confirm via WhatsApp</button>
     </form>
   </div>
 </main>
@@ -70,6 +65,24 @@
   <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+function sendToWhatsApp(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const contact=document.getElementById('contact').value;
+  const course=document.getElementById('course').value;
+  const date=document.getElementById('date').value;
+  const ref=document.getElementById('reference').value;
+  const details=document.getElementById('details').value;
+  const phoneNumber='+233550520858';
+
+  const msg=`Hello, I have PAID and want to confirm a booking.%0A%0A`+
+            `Name: ${name}%0AContact: ${contact}%0ACourse: ${course}%0A`+
+            `Assignment Type: Practical Assignment%0APreferred Date: ${date}%0A`+
+            `Payment Reference: ${ref}%0A%0ADetails: ${details}`;
+  window.open(`https://wa.me/${phoneNumber.replace('+','')}?text=${msg}`, '_blank');
+}
+</script>
+
 </body>
 </html>
