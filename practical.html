@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical Assignment Service</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Practical Assignment Service</h1>
+  <p>Hands-on support for labs, software, and practical tasks.</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Service Details</h2>
+    <p>This service provides comprehensive practical assignment support. You will receive:</p>
+    <ul>
+      <li>Guidance on lab exercises and software tasks</li>
+      <li>Step-by-step demonstrations</li>
+      <li>Hands-on corrections and improvements</li>
+    </ul>
+    <p class="price">Price: GHS 25</p>
+  </div>
+
+  <div class="card">
+    <h2>Payment</h2>
+    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
+    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/PRACTICAL456" target="_blank" onclick="markPaid(event)">Pay GHS 25 via MTN MoMo</a>
+  </div>
+
+  <div class="card">
+    <h2>Confirm Booking</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+      <label>Full Name
+        <input type="text" id="name" placeholder="Your full name" required>
+      </label>
+      <label>Email or WhatsApp Number
+        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
+      </label>
+      <label>Course
+        <input type="text" id="course" placeholder="Course name" required>
+      </label>
+      <label>Assignment Type
+        <input type="text" id="type" value="Practical Assignment" readonly>
+      </label>
+      <label>Preferred Date
+        <input type="date" id="date" required>
+      </label>
+      <label>Payment Reference
+        <input type="text" id="reference" placeholder="Enter payment reference" required>
+      </label>
+      <label>Additional Details
+        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
+      </label>
+      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
+      <p class="note">Button will unlock after clicking the payment button.</p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
