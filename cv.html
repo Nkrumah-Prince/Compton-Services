@@ -3,47 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Writing Service</title>
+<title>CV Creation Service</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-  <h1>CV Writing Service</h1>
-  <p>Professional CV preparation to enhance your job applications.</p>
+  <h1>Professional CV Creation</h1>
+  <p>Create a CV that stands out and impresses recruiters</p>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html">Back to Dashboard</a>
   </nav>
 </header>
 
 <main>
   <div class="card">
     <h2>Service Details</h2>
-    <p>Our CV Writing Service ensures your resume stands out. We provide:</p>
-    <ul>
-      <li>Professional formatting and layout</li>
-      <li>Tailored content for your field</li>
-      <li>Keyword optimization for recruiters</li>
-    </ul>
+    <p>We provide professional CV writing services tailored to your skills, experience, and career goals. 
+       Includes formatting, keywords optimization, and a design that makes your application stand out.</p>
     <p class="price">Price: GHS 20</p>
   </div>
-<div class="card">
-  <h2>Payment (Required Before Booking)</h2>
-  <p><strong>Accepted:</strong> MTN Mobile Money via Moolre</p>
 
-  <label>Select Service
-    <select id="serviceSelect" onchange="setPaymentLink()" required>
-      <option value="">Choose a service</option>
-      <option value="linkedin">LinkedIn Setup – GHS 20</option>
-    </select>
-  </label>
+  <!-- PAYMENT -->
+  <div class="card">
+    <h2>Payment (Required Before Booking)</h2>
+    <p><strong>Pay directly to this MTN MoMo number:</strong> <strong>+233550520858</strong></p>
+    <p><strong>Name on account:</strong> Nkrumah Prince</p>
+    <p>Amount: GHS 20</p>
+    <p>After payment, send your payment reference and screenshot via WhatsApp to confirm your booking.</p>
+  </div>
 
-  <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
-  <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
-</div>
-  
+  <!-- BOOKING FORM -->
   <div class="card">
     <h2>Confirm Booking</h2>
     <form onsubmit="sendToWhatsApp(event)">
@@ -53,11 +45,8 @@
       <label>Email or WhatsApp Number
         <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
       </label>
-      <label>Service
-        <input type="text" id="course" value="CV Writing" readonly>
-      </label>
-      <label>Assignment Type
-        <input type="text" id="type" value="CV Service" readonly>
+      <label>Course or Occupation
+        <input type="text" id="course" placeholder="Your field or course" required>
       </label>
       <label>Preferred Date
         <input type="date" id="date" required>
@@ -68,8 +57,7 @@
       <label>Additional Details
         <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
       </label>
-      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
-      <p class="note">Button will unlock after clicking the payment button.</p>
+      <button id="confirmBtn" type="submit">Confirm via WhatsApp</button>
     </form>
   </div>
 </main>
@@ -78,6 +66,24 @@
   <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+function sendToWhatsApp(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const contact=document.getElementById('contact').value;
+  const course=document.getElementById('course').value;
+  const date=document.getElementById('date').value;
+  const ref=document.getElementById('reference').value;
+  const details=document.getElementById('details').value;
+  const phoneNumber='+233550520858';
+
+  const msg=`Hello, I have PAID and want to confirm a booking.%0A%0A`+
+            `Name: ${name}%0AContact: ${contact}%0ACourse/Occupation: ${course}%0A`+
+            `Preferred Date: ${date}%0A`+
+            `Payment Reference: ${ref}%0A%0ADetails: ${details}`;
+  window.open(`https://wa.me/${phoneNumber.replace('+','')}?text=${msg}`,'_blank');
+}
+</script>
+
 </body>
 </html>
