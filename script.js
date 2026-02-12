@@ -1,61 +1,68 @@
-// === SERVICE SELECTION ===
-function selectService(service){
-  document.getElementById('serviceSelect').value = service;
-  setPaymentLink();
-  document.getElementById('payBtn').scrollIntoView({behavior:'smooth'});
+// Select a service from dropdown or cards
+function selectService(service) {
+    const serviceSelect = document.getElementById('serviceSelect');
+    if(serviceSelect) {
+        serviceSelect.value = service;
+        setPaymentLink();
+        document.getElementById('payBtn').scrollIntoView({behavior:'smooth'});
+    }
 }
 
-// === SET PAYMENT LINK BASED ON SERVICE ===
+// Set payment link according to service
 function setPaymentLink() {
-  const service = document.getElementById('serviceSelect').value;
-  const payBtn = document.getElementById('payBtn');
-  const links = {
-    normal:'https://mtnmomo.com/pay/NORMAL123',
-    practical:'https://mtnmomo.com/pay/PRACTICAL456',
-    project:'https://mtnmomo.com/pay/PROJECT789',
-    cv:'https://mtnmomo.com/pay/CV123',
-    linkedin:'https://mtnmomo.com/pay/LINKEDIN123',
-    windows:'https://mtnmomo.com/pay/WINDOWS123'
-  };
-  payBtn.href = links[service] || '#';
+    const serviceSelect = document.getElementById('serviceSelect');
+    if(!serviceSelect) return;
+
+    const service = serviceSelect.value;
+    const payBtn = document.getElementById('payBtn');
+    const links = {
+        normal: 'https://mtnmomo.com/pay/NORMAL123',
+        practical: 'https://mtnmomo.com/pay/PRACTICAL456',
+        project: 'https://mtnmomo.com/pay/PROJECT789',
+        cv: 'https://mtnmomo.com/pay/CV123',
+        linkedin: 'https://mtnmomo.com/pay/LINKEDIN123',
+        windows: 'https://mtnmomo.com/pay/WINDOWS123'
+    };
+    if(payBtn) payBtn.href = links[service] || '#';
 }
 
-// === PAYMENT BUTTON CLICK ===
-function markPaid(e){
-  if(document.getElementById('payBtn').href === '#'){
+// Unlock confirm button after payment click
+function markPaid(e) {
+    const payBtn = document.getElementById('payBtn');
+    if(!payBtn || payBtn.href === '#') {
+        e.preventDefault();
+        alert('Please select a service first.');
+        return;
+    }
+    localStorage.setItem('paidClicked', 'yes');
+    setTimeout(() => {
+        const confirmBtn = document.getElementById('confirmBtn');
+        if(confirmBtn) confirmBtn.disabled = false;
+    }, 500);
+}
+
+// Send booking details via WhatsApp
+function sendToWhatsApp(e) {
     e.preventDefault();
-    alert('Please select a service first.');
-    return;
-  }
-  localStorage.setItem('paidClicked','yes');
-  setTimeout(()=>{
-    document.getElementById('confirmBtn').disabled = false;
-  },500);
-}
+    if(localStorage.getItem('paidClicked') !== 'yes') {
+        alert('Please complete payment first.');
+        return;
+    }
 
-// === SEND BOOKING TO WHATSAPP ===
-function sendToWhatsApp(e){
-  e.preventDefault();
+    const name = document.getElementById('name')?.value || '';
+    const contact = document.getElementById('contact')?.value || '';
+    const course = document.getElementById('course')?.value || '';
+    const type = document.getElementById('type')?.value || '';
+    const date = document.getElementById('date')?.value || '';
+    const ref = document.getElementById('reference')?.value || '';
+    const details = document.getElementById('details')?.value || '';
 
-  if(localStorage.getItem('paidClicked') !== 'yes'){
-    alert('Please complete payment first.');
-    return;
-  }
+    const phoneNumber = '233550520858'; // Replace with your WhatsApp number
 
-  const name = document.getElementById('name').value;
-  const contact = document.getElementById('contact').value;
-  const course = document.getElementById('course').value;
-  const type = document.getElementById('type').value;
-  const date = document.getElementById('date').value;
-  const ref = document.getElementById('reference').value;
-  const details = document.getElementById('details').value;
+    const msg = `Hello, I have PAID and want to confirm a booking.%0A%0A` +
+                `Name: ${name}%0AContact: ${contact}%0ACourse: ${course}%0A` +
+                `Service Type: ${type}%0APreferred Date: ${date}%0A` +
+                `Payment Reference: ${ref}%0A%0ADetails: ${details}`;
 
-  const phoneNumber = '233550520858'; // Your WhatsApp number
-
-  const msg = `Hello, I have PAID and want to confirm a booking.%0A%0A` +
-              `Name: ${name}%0AContact: ${contact}%0ACourse/Service: ${course}%0A` +
-              `Service Type: ${type}%0APreferred Date: ${date}%0A` +
-              `Payment Reference: ${ref}%0A%0ADetails: ${details}`;
-
-  window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank');
 }
