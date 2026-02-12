@@ -5,35 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LinkedIn Setup Service</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-  <h1>LinkedIn Profile Setup Service</h1>
-  <p>Optimize your professional profile to attract recruiters and network effectively.</p>
+  <h1>LinkedIn Profile Setup</h1>
+  <p>Optimize your professional presence online with a strong LinkedIn profile</p>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html">Back to Dashboard</a>
   </nav>
 </header>
 
 <main>
   <div class="card">
     <h2>Service Details</h2>
-    <p>Our LinkedIn Setup Service will enhance your online professional presence. You will get:</p>
-    <ul>
-      <li>Profile optimization with professional headline and summary</li>
-      <li>Skill endorsements and experience formatting</li>
-      <li>Connections strategy for your industry</li>
-    </ul>
+    <p>We help you create, enhance, and optimize your LinkedIn profile to attract recruiters and showcase your professional skills effectively. Includes profile headline, summary, experience, and recommendations setup.</p>
     <p class="price">Price: GHS 20</p>
   </div>
 
   <div class="card">
-    <h2>Payment</h2>
-    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
-    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/LINKEDIN123" target="_blank" onclick="markPaid(event)">Pay GHS 20 via MTN MoMo</a>
+    <h2>Payment (Required Before Booking)</h2>
+    <p><strong>Accepted:</strong> MTN Mobile Money via WhatsApp</p>
+
+    <label>Select Service
+      <select id="serviceSelect" onchange="setPaymentLink()" required>
+        <option value="">Choose a service</option>
+        <option value="linkedin">LinkedIn Setup – GHS 20</option>
+      </select>
+    </label>
+
+    <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
+    <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
   </div>
 
   <div class="card">
@@ -45,11 +49,8 @@
       <label>Email or WhatsApp Number
         <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
       </label>
-      <label>Service
-        <input type="text" id="course" value="LinkedIn Setup" readonly>
-      </label>
-      <label>Assignment Type
-        <input type="text" id="type" value="LinkedIn Profile Service" readonly>
+      <label>Course or Occupation
+        <input type="text" id="course" placeholder="Your field or course" required>
       </label>
       <label>Preferred Date
         <input type="date" id="date" required>
@@ -70,6 +71,5 @@
   <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
