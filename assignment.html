@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignments – Compton Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+  body { background: #f4f7fd; color: #333; scroll-behavior: smooth; }
+  a { text-decoration: none; color: inherit; }
+
+  header { background: linear-gradient(135deg,#6a11cb,#2575fc); color:#fff; text-align:center; padding:50px 20px;}
+  header h1 { font-size:2.8rem; margin-bottom:10px; }
+  header p { font-size:1.2rem; opacity:0.9; }
+
+  main { max-width:1000px; margin:40px auto; padding:0 20px; }
+
+  .card { background:#fff; border-radius:25px; padding:35px; margin-bottom:40px; box-shadow:0 12px 30px rgba(0,0,0,0.12); transition:all 0.3s ease; }
+  .card:hover { transform:translateY(-5px); }
+
+  h2 { text-align:center; margin-bottom:30px; color:#6a11cb; }
+
+  .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+  .service { border-radius:18px; padding:30px; background:linear-gradient(145deg,#fdfbfb,#ebedee); border-left:10px solid #6a11cb; cursor:pointer; position:relative; }
+  .service:hover { box-shadow:0 10px 30px rgba(0,0,0,0.18); }
+  .service i { font-size:2rem; color:#6a11cb; margin-bottom:15px; display:block; }
+  .service h3 { font-size:1.4rem; margin-bottom:10px; color:#333; }
+  .service p { font-size:1rem; opacity:0.85; margin-bottom:15px; }
+  .price { font-weight:bold; font-size:1.5rem; color:#ff5722; }
+  .tooltip { position:absolute; bottom:15px; right:15px; background:#6a11cb; color:#fff; padding:6px 10px; border-radius:6px; font-size:0.85rem; opacity:0; transition:opacity 0.3s; pointer-events:none; }
+  .service:hover .tooltip { opacity:1; }
+
+  .pay-btn { display:block; text-align:center; padding:18px; background:#ffcc00; color:#000; border-radius:15px; font-weight:bold; margin-top:20px; font-size:1.1rem; transition:all 0.3s ease; }
+  .pay-btn:hover { background:#e6b800; transform:scale(1.05); }
+
+  form label { display:block; margin-top:18px; font-weight:500; }
+  input, select, textarea, button { width:100%; padding:15px; margin-top:6px; border-radius:10px; border:1px solid #ccc; font-size:1rem; transition:border-color 0.3s; }
+  input:focus, select:focus, textarea:focus { border-color:#6a11cb; outline:none; }
+  textarea { resize:vertical; }
+  button { background:#6a11cb; color:#fff; font-weight:bold; cursor:pointer; border:none; transition:all 0.3s; font-size:1.1rem; }
+  button:hover { background:#2575fc; transform:scale(1.02); }
+  button[disabled] { background:#888; cursor:not-allowed; }
+  .note { font-size:0.9rem; color:#555; margin-top:8px; }
+
+  footer { text-align:center; padding:30px; font-size:0.9rem; color:#777; margin-top:60px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Assignment Services</h1>
+  <p>Choose your assignment type and book instantly</p>
+</header>
+
+<main>
+
+  <!-- SERVICES -->
+  <div class="card">
+    <h2>Available Assignment Services</h2>
+    <div class="services">
+      <div class="service" onclick="selectService('normal')">
+        <i class="fas fa-book"></i>
+        <h3>Normal Assignment</h3>
+        <p>Complete guidance, review, and corrections for written assignments.</p>
+        <p class="price">GHS 20</p>
+        <div class="tooltip">Click to select</div>
+      </div>
+      <div class="service" onclick="selectService('practical')">
+        <i class="fas fa-flask"></i>
+        <h3>Practical Assignment</h3>
+        <p>Hands-on support for labs, software, and practical tasks.</p>
+        <p class="price">GHS 25</p>
+        <div class="tooltip">Click to select</div>
+      </div>
+      <div class="service" onclick="selectService('project')">
+        <i class="fas fa-tasks"></i>
+        <h3>Project / Coursework</h3>
+        <p>Step-by-step guidance from start to submission.</p>
+        <p class="price">GHS 70</p>
+        <div class="tooltip">Click to select</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="card">
+    <h2>Payment (Required Before Booking)</h2>
+    <p><strong>Accepted:</strong> MTN Mobile Money (MoMo)</p>
+
+    <label>Select Service
+      <select id="serviceSelect" onchange="setPaymentLink()" required>
+        <option value="">Choose a service</option>
+        <option value="normal">Normal Assignment – GHS 20</option>
+        <option value="practical">Practical Assignment – GHS 25</option>
+        <option value="project">Project / Coursework – GHS 70</option>
+      </select>
+    </label>
+
+    <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
+    <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
+  </div>
+
+  <!-- BOOKING FORM -->
+  <div class="card">
+    <h2>Confirm Your Booking</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+      <label>Full Name
+        <input type="text" id="name" placeholder="Your full name" required>
+      </label>
+      <label>WhatsApp Number
+        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
+      </label>
+      <label>Course
+        <input type="text" id="course" placeholder="Course name" required>
+      </label>
+      <label>Assignment Type
+        <select id="type" required>
+          <option value="">Select type</option>
+          <option>Normal (Non-Practical)</option>
+          <option>Practical</option>
+          <option>Project / Coursework</option>
+        </select>
+      </label>
+      <label>Preferred Date
+        <input type="date" id="date" required>
+      </label>
+      <label>Payment Reference
+        <input type="text" id="reference" placeholder="Enter payment reference" required>
+      </label>
+      <label>Additional Details
+        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
+      </label>
+      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
+      <p class="note">Button unlocks after clicking the payment button.</p>
+    </form>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
+</footer>
+
+<script>
+  function selectService(service){
+    document.getElementById('serviceSelect').value = service;
+    setPaymentLink();
+    document.getElementById('payBtn').scrollIntoView({behavior:'smooth'});
+  }
+
+  function setPaymentLink() {
+    const service = document.getElementById('serviceSelect').value;
+    const payBtn = document.getElementById('payBtn');
+    const links = {
+      normal:'https://momo.com/pay/NORMAL123',
+      practical:'https://momo.com/pay/PRACTICAL456',
+      project:'https://momo.com/pay/PROJECT789'
+    };
+    payBtn.href = links[service]||'#';
+  }
+
+  function markPaid(e){
+    if(document.getElementById('payBtn').href==='#'){
+      e.preventDefault();
+      alert('Please select a service first.');
+      return;
+    }
+    localStorage.setItem('paidClicked','yes');
+    setTimeout(()=>{document.getElementById('confirmBtn').disabled=false;},500);
+  }
+
+  function sendToWhatsApp(e){
+    e.preventDefault();
+    if(localStorage.getItem('paidClicked')!=='yes'){
+      alert('Please complete payment first.');
+      return;
+    }
+    const name=document.getElementById('name').value;
+    const contact=document.getElementById('contact').value;
+    const course=document.getElementById('course').value;
+    const type=document.getElementById('type').value;
+    const date=document.getElementById('date').value;
+    const ref=document.getElementById('reference').value;
+    const details=document.getElementById('details').value;
+    const phoneNumber='233550520858';
+
+    const msg=`Hello, I have PAID and want to confirm a booking.%0A%0A`+
+              `Name: ${name}%0AContact: ${contact}%0ACourse: ${course}%0A`+
+              `Assignment Type: ${type}%0APreferred Date: ${date}%0A`+
+              `Payment Reference: ${ref}%0A%0ADetails: ${details}`;
+    window.open(`https://wa.me/${phoneNumber}?text=${msg}`,'_blank');
+  }
+</script>
+
+</body>
+</html>
