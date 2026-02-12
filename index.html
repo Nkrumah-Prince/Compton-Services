@@ -4,57 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compton Services - Home</title>
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-  <h1>Compton Services</h1>
-  <p>Your professional solution for assignments, CVs, LinkedIn setups, and Windows installations!</p>
+  <h1>Welcome to Compton Services</h1>
+  <p>Your one-stop platform for assignments, practicals, projects, CVs, LinkedIn setup, and Windows installation</p>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html" class="pay-btn">Go to Dashboard</a>
   </nav>
 </header>
 
 <main>
-  <!-- SITE DESCRIPTION -->
-  <section class="intro">
-    <h2>Welcome to Compton Services</h2>
-    <p>Compton Services is your all-in-one platform for professional academic and tech support. We provide high-quality services including assignments (normal, practical, and projects), CV creation, LinkedIn profile setup, and Windows installation. Every service is designed to save you time, give clear guidance, and guarantee satisfaction. With seamless payment via MTN Mobile Money and instant WhatsApp confirmation, booking your desired service has never been easier. Whether you are a student or a professional, our services are tailored to meet your needs efficiently.</p>
-    <button onclick="location.href='dashboard.html'" class="dashboard-btn">
-      Go to Services Dashboard
-    </button>
-  </section>
+  <div class="card">
+    <h2>About Our Services</h2>
+    <p>
+      Compton Services is designed to provide students, professionals, and individuals with reliable, professional, and interactive support for their academic and personal needs. 
+      From completing assignments, handling practicals, guiding projects, creating professional CVs, optimizing LinkedIn profiles, to installing and configuring Windows, we have it all covered. 
+      Our platform is fully online, easy to use, and allows secure payment via MTN MoMo with instant WhatsApp confirmation. Every service has its own dedicated page with detailed description, booking forms, and payment integration.
+    </p>
+    <p>
+      The Dashboard provides a clear view of all services, making it easy for users to navigate and select the service they require. Each service page includes interactive features, responsive forms, and clear pricing. 
+      With our professional approach, you can be confident that your tasks are handled efficiently and securely.
+    </p>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="dashboard.html" class="pay-btn" style="font-size:1.3rem; padding:20px 30px;">
+        Go to Dashboard & Services
+      </a>
+    </div>
+  </div>
 </main>
 
 <footer>
   <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
-
-<style>
-/* Home Page Styling */
-body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f4f7fd; color:#333; scroll-behavior:smooth;}
-header { background: linear-gradient(135deg,#6a11cb,#2575fc); color:#fff; padding:40px 20px; text-align:center;}
-header h1 { font-size:3rem; margin-bottom:10px;}
-header p { font-size:1.3rem; opacity:0.9;}
-nav a { color:#fff; margin:0 15px; font-weight:500; text-decoration:none;}
-main { max-width:1100px; margin:50px auto; padding:0 20px;}
-.intro { background:#fff; padding:40px; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.12); text-align:center;}
-.intro h2 { font-size:2.2rem; margin-bottom:20px; color:#6a11cb;}
-.intro p { font-size:1.1rem; line-height:1.6; margin-bottom:30px;}
-.dashboard-btn { padding:18px 30px; font-size:1.2rem; background:#ffcc00; color:#000; border:none; border-radius:15px; cursor:pointer; font-weight:bold; transition:all 0.3s ease;}
-.dashboard-btn:hover { background:#e6b800; transform:scale(1.05);}
-footer { text-align:center; padding:30px; font-size:0.9rem; color:#777;}
-@media(max-width:600px){
-  header h1{font-size:2rem;}
-  header p{font-size:1rem;}
-  .intro h2{font-size:1.8rem;}
-  .intro p{font-size:1rem;}
-  .dashboard-btn{font-size:1rem; padding:15px 25px;}
-}
-</style>
 
 </body>
 </html>
