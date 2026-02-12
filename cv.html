@@ -3,48 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Writing Service – Compton Digital Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>CV Writing Service</title>
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif;}
-body{background:#f4f7fd;color:#333;}
-header{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:50px 20px;text-align:center;}
-header h1{font-size:2.5rem;margin-bottom:10px;}
-header p{font-size:1.2rem;opacity:0.9;}
-nav{margin-top:20px;}
-nav a{color:#fff;padding:10px 20px;margin:5px;border-radius:10px;background:rgba(255,255,255,0.2);transition:0.3s;}
-nav a:hover{background:#ffcc00;color:#000;}
-
-main{max-width:1000px;margin:40px auto;padding:0 20px;}
-.card{background:#fff;border-radius:25px;padding:35px;margin-bottom:40px;box-shadow:0 12px 30px rgba(0,0,0,0.12);}
-h2{text-align:center;margin-bottom:30px;color:#6a11cb;}
-.service-description p{margin-bottom:15px;}
-.price{font-weight:bold;font-size:1.5rem;color:#ff5722;}
-.pay-btn{display:block;text-align:center;padding:18px;background:#ffcc00;color:#000;border-radius:15px;font-weight:bold;margin-top:20px;font-size:1.1rem;transition:all 0.3s;}
-.pay-btn:hover{background:#e6b800; transform:scale(1.05);}
-form label{display:block;margin-top:18px;font-weight:500;}
-input,textarea,button{width:100%;padding:15px;margin-top:6px;border-radius:10px;border:1px solid #ccc;font-size:1rem;}
-input:focus,textarea:focus{border-color:#6a11cb;outline:none;}
-textarea{resize:vertical;}
-button{background:#6a11cb;color:#fff;font-weight:bold;cursor:pointer;border:none;font-size:1.1rem;}
-button:hover{background:#2575fc;}
-button[disabled]{background:#888; cursor:not-allowed;}
-.note{font-size:0.9rem;color:#555;margin-top:8px;}
-footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:60px;}
-.back-home{display:block;text-align:center;margin-top:20px;color:#6a11cb;font-weight:bold;}
-.back-home:hover{text-decoration:underline;}
-</style>
 </head>
 <body>
 
 <header>
   <h1>CV Writing Service</h1>
-  <p>Professional CV creation to boost your career</p>
+  <p>Professional CV preparation to enhance your job applications.</p>
   <nav>
     <a href="index.html">Home</a>
-    <a href="linkedin.html">LinkedIn Setup</a>
-    <a href="windows.html">Windows Install</a>
     <a href="dashboard.html">Dashboard</a>
   </nav>
 </header>
@@ -52,45 +21,55 @@ footer{text-align:center;padding:30px;font-size:0.9rem;color:#777;margin-top:60p
 <main>
   <div class="card">
     <h2>Service Details</h2>
-    <div class="service-description">
-      <p>We craft a professional CV tailored to your career goals. It highlights your skills, experience, and achievements, giving you the best chance to stand out to recruiters and employers.</p>
-      <p class="price">GHS 20</p>
-    </div>
-    <a id="payBtn" class="pay-btn" href="https://momo.com/pay/CV123" target="_blank" onclick="markPaid(event)">Pay with MTN MoMo</a>
-    <p class="note">After payment, copy your <strong>payment reference</strong> below to confirm booking.</p>
+    <p>Our CV Writing Service ensures your resume stands out. We provide:</p>
+    <ul>
+      <li>Professional formatting and layout</li>
+      <li>Tailored content for your field</li>
+      <li>Keyword optimization for recruiters</li>
+    </ul>
+    <p class="price">Price: GHS 20</p>
   </div>
 
   <div class="card">
-    <h2>Booking Form</h2>
+    <h2>Payment</h2>
+    <p><strong>Accepted:</strong> MTN MoMo + WhatsApp confirmation</p>
+    <a id="payBtn" class="pay-btn" href="https://mtnmomo.com/pay/CV123" target="_blank" onclick="markPaid(event)">Pay GHS 20 via MTN MoMo</a>
+  </div>
+
+  <div class="card">
+    <h2>Confirm Booking</h2>
     <form onsubmit="sendToWhatsApp(event)">
-      <label>Full Name<input type="text" id="name" placeholder="Your full name" required></label>
-      <label>Email or WhatsApp Number<input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required></label>
-      <label>Career Field<textarea id="details" rows="4" placeholder="Specify your career field or desired job"></textarea></label>
-      <label>Payment Reference<input type="text" id="reference" placeholder="Enter payment reference" required></label>
+      <label>Full Name
+        <input type="text" id="name" placeholder="Your full name" required>
+      </label>
+      <label>Email or WhatsApp Number
+        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
+      </label>
+      <label>Service
+        <input type="text" id="course" value="CV Writing" readonly>
+      </label>
+      <label>Assignment Type
+        <input type="text" id="type" value="CV Service" readonly>
+      </label>
+      <label>Preferred Date
+        <input type="date" id="date" required>
+      </label>
+      <label>Payment Reference
+        <input type="text" id="reference" placeholder="Enter payment reference" required>
+      </label>
+      <label>Additional Details
+        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
+      </label>
       <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
-      <p class="note">Button unlocks after clicking the payment button.</p>
+      <p class="note">Button will unlock after clicking the payment button.</p>
     </form>
-    <a href="index.html" class="back-home">← Back to Home</a>
   </div>
 </main>
 
 <footer>
-  <p>© 2026 Compton Digital Services • Professional Guidance & Tutoring</p>
+  <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script>
-function markPaid(e){e.preventDefault();localStorage.setItem('paidClicked','yes');document.getElementById('confirmBtn').disabled=false;}
-function sendToWhatsApp(e){
-e.preventDefault();
-if(localStorage.getItem('paidClicked')!=='yes'){alert('Please complete payment first.');return;}
-const name=document.getElementById('name').value;
-const contact=document.getElementById('contact').value;
-const details=document.getElementById('details').value;
-const ref=document.getElementById('reference').value;
-const phoneNumber='233550520858';
-const msg=`Hello, I have PAID and want to confirm CV writing booking.%0AName: ${name}%0AContact: ${contact}%0ADetails: ${details}%0APayment Reference: ${ref}`;
-window.open(`https://wa.me/${phoneNumber}?text=${msg}`,'_blank');}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
