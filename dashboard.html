@@ -3,133 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compton Services - Dashboard</title>
-<link rel="stylesheet" href="./style.css">
+<title>Dashboard - Compton Services</title>
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
   <h1>Compton Services Dashboard</h1>
-  <p>Select a service to get started!</p>
+  <p>Select a service to view details, make payment, and book</p>
   <nav>
     <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
   </nav>
 </header>
 
 <main>
-  <section class="cards">
-    <div class="card service" onclick="selectService('normal')">
-      <i class="fas fa-book"></i>
-      <h3>Normal Assignment</h3>
-      <p>Complete guidance, review, and corrections for written assignments.</p>
-      <p class="price">GHS 20</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-
-    <div class="card service" onclick="selectService('practical')">
-      <i class="fas fa-flask"></i>
-      <h3>Practical Assignment</h3>
-      <p>Hands-on support for labs, software, and practical tasks.</p>
-      <p class="price">GHS 25</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-
-    <div class="card service" onclick="selectService('project')">
-      <i class="fas fa-tasks"></i>
-      <h3>Project / Coursework</h3>
-      <p>Step-by-step guidance from start to submission.</p>
-      <p class="price">GHS 70</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-
-    <div class="card service" onclick="selectService('cv')">
-      <i class="fas fa-file-alt"></i>
-      <h3>CV Writing</h3>
-      <p>Professional CV creation and improvement for job applications.</p>
-      <p class="price">GHS 20</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-
-    <div class="card service" onclick="selectService('linkedin')">
-      <i class="fab fa-linkedin"></i>
-      <h3>LinkedIn Setup</h3>
-      <p>Build a professional LinkedIn profile to attract recruiters.</p>
-      <p class="price">GHS 20</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-
-    <div class="card service" onclick="selectService('windows')">
-      <i class="fas fa-desktop"></i>
-      <h3>Windows Installation</h3>
-      <p>Fresh Windows setup, installation, and configuration for your PC.</p>
-      <p class="price">GHS 100</p>
-      <div class="tooltip">Click to select this service</div>
-    </div>
-  </section>
-
-  <!-- PAYMENT & BOOKING -->
   <div class="card">
-    <h2>Payment & Booking</h2>
-    <p><strong>Accepted:</strong> MTN Mobile Money + WhatsApp Confirmation</p>
-
-    <label>Select Service
-      <select id="serviceSelect" onchange="setPaymentLink()" required>
-        <option value="">Choose a service</option>
-        <option value="normal">Normal Assignment – GHS 20</option>
-        <option value="practical">Practical Assignment – GHS 25</option>
-        <option value="project">Project / Coursework – GHS 70</option>
-        <option value="cv">CV Writing – GHS 20</option>
-        <option value="linkedin">LinkedIn Setup – GHS 20</option>
-        <option value="windows">Windows Installation – GHS 100</option>
-      </select>
-    </label>
-
-    <a id="payBtn" class="pay-btn" href="#" target="_blank" onclick="markPaid(event)">Pay via MTN MoMo</a>
-    <p class="note">After payment, copy your <strong>payment reference</strong> to confirm booking below.</p>
-
-    <form onsubmit="sendToWhatsApp(event)">
-      <label>Full Name
-        <input type="text" id="name" placeholder="Your full name" required>
-      </label>
-      <label>Email or WhatsApp Number
-        <input type="text" id="contact" placeholder="e.g. 024xxxxxxx" required>
-      </label>
-      <label>Course / Service
-        <input type="text" id="course" placeholder="Course or Service Name" required>
-      </label>
-      <label>Service Type
-        <select id="type" required>
-          <option value="">Select type</option>
-          <option>Normal Assignment</option>
-          <option>Practical Assignment</option>
-          <option>Project / Coursework</option>
-          <option>CV Writing</option>
-          <option>LinkedIn Setup</option>
-          <option>Windows Installation</option>
-        </select>
-      </label>
-      <label>Preferred Date
-        <input type="date" id="date" required>
-      </label>
-      <label>Payment Reference
-        <input type="text" id="reference" placeholder="Enter payment reference" required>
-      </label>
-      <label>Additional Details
-        <textarea id="details" rows="4" placeholder="Any specific instructions"></textarea>
-      </label>
-      <button id="confirmBtn" type="submit" disabled>Confirm via WhatsApp</button>
-      <p class="note">Button unlocks after clicking the payment button.</p>
-    </form>
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service" onclick="window.location.href='normal.html'">
+        <i class="fas fa-book"></i>
+        <h3>Normal Assignment</h3>
+        <p>Written assignments guidance and review.</p>
+        <p class="price">GHS 20</p>
+      </div>
+      <div class="service" onclick="window.location.href='practical.html'">
+        <i class="fas fa-flask"></i>
+        <h3>Practical Assignment</h3>
+        <p>Hands-on lab and practical support.</p>
+        <p class="price">GHS 25</p>
+      </div>
+      <div class="service" onclick="window.location.href='project.html'">
+        <i class="fas fa-tasks"></i>
+        <h3>Project / Coursework</h3>
+        <p>Full guidance from start to submission.</p>
+        <p class="price">GHS 70</p>
+      </div>
+      <div class="service" onclick="window.location.href='cv.html'">
+        <i class="fas fa-file-alt"></i>
+        <h3>CV Writing</h3>
+        <p>Professional CV preparation.</p>
+        <p class="price">GHS 20</p>
+      </div>
+      <div class="service" onclick="window.location.href='linkedin.html'">
+        <i class="fab fa-linkedin"></i>
+        <h3>LinkedIn Setup</h3>
+        <p>Optimize your professional LinkedIn profile.</p>
+        <p class="price">GHS 20</p>
+      </div>
+      <div class="service" onclick="window.location.href='windows.html'">
+        <i class="fas fa-desktop"></i>
+        <h3>Windows Installation</h3>
+        <p>Fresh Windows installation with configuration.</p>
+        <p class="price">GHS 100</p>
+      </div>
+    </div>
   </div>
-
 </main>
 
 <footer>
   <p>© 2026 Compton Services • Professional Guidance & Tutoring</p>
 </footer>
 
-<script src="./script.js"></script>
 </body>
 </html>
